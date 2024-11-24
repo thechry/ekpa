@@ -22,3 +22,6 @@ jobs:
       java-version: '21'
       distribution: adopt
 
+   - name: Compile project
+     id: compile-test
+     run: mvn clean compile

@@ -1,0 +1,3 @@
+name: CI/CD
+run-name: ${{ github.sha }} of branch ${{ github.ref }} by @${{ github.actor }}
+

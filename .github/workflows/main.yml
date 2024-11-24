@@ -4,7 +4,7 @@ run-name: ${{ github.sha }} of branch ${{ github.ref }} by @${{ github.actor }}
 on:
  push:
   branches:
-   - ekpa
+   - pom-update
 
 permissions:
  contents: write

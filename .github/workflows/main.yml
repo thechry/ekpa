@@ -58,7 +58,15 @@ jobs:
      id: clean-compile-citizen
      run: mvn clean install
 
-
+ merge-to-develop:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Checkout code
+     uses: actions/checkout@v4
+ 
+   - name: Just a test
+     id: test
+     run: echo "hello test"
 
 
 

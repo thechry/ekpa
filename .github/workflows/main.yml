@@ -22,7 +22,7 @@ jobs:
       java-version: '21'
       distribution: adopt
 
-   - name: Clean n\' Compile project
+   - name: Clean - Compile project
      id: clean-compile-citizen
      run: mvn clean compile
 
@@ -38,7 +38,7 @@ jobs:
       java-version: '21'
       distribution: adopt
 
-   - name: Clean n\' Install project
+   - name: Clean - Install project
      id: clean-compile-citizen
      run: mvn clean install -DskipTests
 
@@ -54,7 +54,7 @@ jobs:
       java-version: '21'
       distribution: adopt
       
-   - name: Clean n\' Install n\' Test project
+   - name: Clean - Install - Test project
      id: clean-compile-citizen
      run: mvn clean install
 

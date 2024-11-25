@@ -22,9 +22,9 @@ jobs:
         java-version: '21'
         distribution: adopt
 
-      - name: Clean - Compile project
-        id: clean-compile-citizen
-        run: mvn clean compile
+    - name: Clean - Compile project
+      id: clean-compile-citizen
+      run: mvn clean compile
 
   clean-install-no-tests:
     runs-on: ubuntu-latest

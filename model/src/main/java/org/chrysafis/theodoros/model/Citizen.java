@@ -54,14 +54,14 @@ public class Citizen
     
     @Digits(integer = 9, fraction = 0, message = "Please insert 9 digits for AFM!")
     @Positive(message = "AFM must be positive number!")    
-    @Column(name="citizen_afm", length=9, nullable=false, unique=false)
+    @Column(name="citizen_afm", length=9, nullable=rtue, unique=false)
     private int citizenAfm = 0;
     
      /*
      * Οριοθετούμε την διεύθυνση στους 150 χαρακτήρες. Δεν υπάρχει λόγος να καταναλώσουμε παραπάνω πόρους.
      */
     @Size(max=150, message = "Address should not exceed 250 chars!")
-    @Column(name="citizen_address", length=150, nullable=false, unique=false)
+    @Column(name="citizen_address", length=150, nullable=true, unique=false)
     private String citizenAddress = null;
     
     public Citizen() {}

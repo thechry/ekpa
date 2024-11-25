@@ -67,21 +67,28 @@ public class CitizenController {
     
     @PutMapping(value = "{id}", consumes = {"application/json", "application/xml"})
 	ResponseEntity<?> updateCitizen(@PathVariable String id, @Valid @RequestBody Citizen citizen) {
+	if(id == "" || id.length()!=9)
+    	{
+    		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id is null or not 9 digits!");
+    	}
+    	else
+    	{
 		if (!citizen.GetTautotita().equals(id))
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Trying to update citizen with wrong id!");
 		else return repo.findById(id)
-	      .map(oldCitizen -> {
-	          //oldCitizen.SetCitizenName(citizen.GetCitizenName());
-	          //oldCitizen.SetCitizenSurname(citizen.GetCitizenSurname());
-	          //oldCitizen.SetCitizenGender(citizen.GetCitizenGender());
-	          //oldCitizen.SetCitizenDoB(citizen.GetCitizenDoB());
-	          oldCitizen.SetCitizenAfm(citizen.GetCitizenAfm());
-	          oldCitizen.SetCitizenAddress(citizen.GetCitizenAddress());
-	          repo.save(oldCitizen);
-	          return ResponseEntity.noContent().build();
-	        })
-	      .orElseThrow(() -> 
-	      	new ResponseStatusException(HttpStatus.NOT_FOUND, "Citizen with given tautotita does not exist!"));
+		      .map(oldCitizen -> {
+		          //oldCitizen.SetCitizenName(citizen.GetCitizenName());
+		          //oldCitizen.SetCitizenSurname(citizen.GetCitizenSurname());
+		          //oldCitizen.SetCitizenGender(citizen.GetCitizenGender());
+		          //oldCitizen.SetCitizenDoB(citizen.GetCitizenDoB());
+		          oldCitizen.SetCitizenAfm(citizen.GetCitizenAfm());
+		          oldCitizen.SetCitizenAddress(citizen.GetCitizenAddress());
+		          repo.save(oldCitizen);
+		          return ResponseEntity.noContent().build();
+		        })
+		      .orElseThrow(() -> 
+		      	new ResponseStatusException(HttpStatus.NOT_FOUND, "Citizen with given tautotita does not exist!"));
+	}
 	}
     
     @DeleteMapping("{id}")

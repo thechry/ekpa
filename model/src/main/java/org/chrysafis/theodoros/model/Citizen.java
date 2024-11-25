@@ -138,6 +138,10 @@ public class Citizen
         	this.citizenAddress = value;
         	return this;
         }
+        
+        public Citizen build() {
+        	return new Citizen(this);
+        }
     }
     
 

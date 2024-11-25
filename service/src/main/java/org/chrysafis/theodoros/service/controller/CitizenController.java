@@ -106,6 +106,10 @@ public class CitizenController {
 			    .orElseThrow(() -> 
 			      	 new ResponseStatusException(HttpStatus.NOT_FOUND, "Citizen with given tautotita does not exist!"));
 	}
+
+/**********************
+     TODO: SearchCitizen
+    **********************/
     
     @ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)

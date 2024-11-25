@@ -49,7 +49,7 @@ public class ThirdIT  implements TestLifecycleLogger
     }
     
     @Test
-    @Order(2)
+    @Order(4)
     public void deleteCorrectCitizen() throws Exception{
     	given().delete("/api/citizens/AX123450").then().assertThat().statusCode(204);
     }
@@ -61,7 +61,7 @@ public class ThirdIT  implements TestLifecycleLogger
     }
     
     @Test
-    @Order(4)
+    @Order(2)
     public void getExistingCitizens() throws Exception{
     	List<Citizen> citizen = given().accept("application/json").get("/api/citizens").then().assertThat().
     			statusCode(200).extract().as(new TypeRef<List<Citizen>>(){});

@@ -71,10 +71,10 @@ public class CitizenController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Trying to update citizen with wrong id!");
 		else return repo.findById(id)
 	      .map(oldCitizen -> {
-	          oldCitizen.SetCitizenName(citizen.GetCitizenName());
-	          oldCitizen.SetCitizenSurname(citizen.GetCitizenSurname());
-	          oldCitizen.SetCitizenGender(citizen.GetCitizenGender());
-	          oldCitizen.SetCitizenDoB(citizen.GetCitizenDoB());
+	          //oldCitizen.SetCitizenName(citizen.GetCitizenName());
+	          //oldCitizen.SetCitizenSurname(citizen.GetCitizenSurname());
+	          //oldCitizen.SetCitizenGender(citizen.GetCitizenGender());
+	          //oldCitizen.SetCitizenDoB(citizen.GetCitizenDoB());
 	          oldCitizen.SetCitizenAfm(citizen.GetCitizenAfm());
 	          oldCitizen.SetCitizenAddress(citizen.GetCitizenAddress());
 	          repo.save(oldCitizen);

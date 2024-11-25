@@ -54,7 +54,7 @@ public class Citizen
     
     @Digits(integer = 9, fraction = 0, message = "Please insert 9 digits for AFM!")
     @Positive(message = "AFM must be positive number!")    
-    @Column(name="citizen_afm", length=9, nullable=rtue, unique=false)
+    @Column(name="citizen_afm", length=9, nullable=true, unique=false)
     private int citizenAfm = 0;
     
      /*

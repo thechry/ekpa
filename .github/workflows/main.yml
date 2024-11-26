@@ -27,11 +27,11 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Upload report
-        if: always() 
+        if: always() && steps.clean-install-mitroo.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: ./reports
+          path: ./reports/*.xml
 
   clean-install-test:
     runs-on: ubuntu-latest

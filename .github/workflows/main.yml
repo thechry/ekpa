@@ -42,22 +42,36 @@ jobs:
         id: clean-install-test-mitroo
         run: mvn clean install
 
-      - name: Upload report
+      - name: Upload report on success
         if: always() && steps.clean-install-test-mitroo.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
-          name: test-reports
+          name: test-reports-success
           path: '**/target/surefire-reports/*.xml'
 
+      - name: Upload report on failure
+        if: always() && steps.clean-install-test-mitroo.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports-failures
+          path: '**/target/surefire-reports/*.xml'
+          
       - name: Integration test
         id: integration-test-mitroo
         run: mvn failsafe:integration-test
 
-      - name: Upload Integration report
+      - name: Upload Integration success report
         if: always() && steps.integration-test-mitroo.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: integration-test-reports
+          path: '**/target/failsafe-reports/*.xml'
+
+      - name: Upload Integration failure report
+        if: always() && steps.integration-test-mitroo.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-reports-failures
           path: '**/target/failsafe-reports/*.xml'
 
   merge-to-develop:

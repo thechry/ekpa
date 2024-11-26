@@ -27,7 +27,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Upload report
-        if: always() && steps.clean-install-mitroo == 'success'
+        if: always() 
         uses: actions/upload-artifact@v3
         with:
           name: test-reports

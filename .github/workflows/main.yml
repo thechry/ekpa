@@ -71,13 +71,13 @@ jobs:
           distribution: adopt
               
       - name: Integration test
-      id: integration-test-mitroo
-      run: mvn failsafe:integration-test
+        id: integration-test-mitroo
+        run: mvn failsafe:integration-test
 
-     - name: Upload Integration success report
-       if: always() && steps.integration-test-mitroo.outcome == 'success'
-       uses: actions/upload-artifact@v4
-       with:
+      - name: Upload Integration success report
+        if: always() && steps.integration-test-mitroo.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
          name: integration-test-reports
          path: '**/target/failsafe-reports/*.xml'
 
@@ -89,7 +89,7 @@ jobs:
           path: '**/target/failsafe-reports/*.xml'
 
   merge-to-develop:
-    needs: clean-install-test
+    needs: clean-install-unit_test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

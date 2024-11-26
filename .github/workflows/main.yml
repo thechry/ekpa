@@ -25,14 +25,7 @@ jobs:
       - name: Clean - Install project
         id: clean-install-mitroo
         run: mvn clean install -DskipTests
-
-      - name: Upload report
-        if: always() && steps.clean-install-mitroo.outcome == 'success'
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-reports
-          path: ./reports/*.xml
-
+      
   clean-install-test:
     runs-on: ubuntu-latest
     steps:
@@ -46,16 +39,85 @@ jobs:
           distribution: adopt
       
       - name: Clean - Install - Test project
-        id: clean-compile-citizen
+        id: clean-install-test-mitroo
         run: mvn clean install
 
+      - name: Upload report
+        if: always() && steps.clean-install-test-mitroo.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: '**/target/surefire-reports/*.xml'
+
+      - name: Integration test
+        id: integration-test-mitroo
+        run: mvn failsafe:integration-test
+
+      - name: Upload Integration report
+        if: always() && steps.integration-test-mitroo.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-reports
+          path: '**/target/failsafe-reports/*.xml'
+
   merge-to-develop:
+    needs: clean-install-test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: develop
  
-      - name: Just a test
-        id: test
-        run: echo "hello test"
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: adopt
 
+      - name: Package mitroo
+        run: mvn clean package -DskipTests
+
+      - name: Github Release
+        id: create-release
+        uses: actions/create-release@v1
+        with:
+          tag_name: dev-pre-release
+          release_name: "Release ${{github.sha }}"
+          body: "Auto generated release from ${{github.sha}}"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Upload jar to Github Releases
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: $${{steps.create-release.outputs.upload_url}}
+          asset_path: service/target/service-0.0.1-SNAPSHOT.jar
+          asset_name: service-0.0.1-SNAPSHOT.jar
+          asset_content_type: application/java-archive
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        

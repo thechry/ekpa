@@ -1,0 +1,61 @@
+name: CI/CD
+run-name: ${{ github.sha }} of branch ${{ github.ref }} by @${{ github.actor }}
+
+on:
+  push:
+    branches:
+      - src-updates
+
+permissions:
+  contents: write
+
+jobs:
+  clean-install-no-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: adopt
+
+      - name: Clean - Install project
+        id: clean-install-mitroo
+        run: mvn clean install -DskipTests
+
+      - name: Upload report
+        if: always() && steps.clean-install-mitroo.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: ./reports/*.xml
+
+  clean-install-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: adopt
+      
+      - name: Clean - Install - Test project
+        id: clean-compile-citizen
+        run: mvn clean install
+
+  merge-to-develop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
+      - name: Just a test
+        id: test
+        run: echo "hello test"
+

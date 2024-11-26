@@ -1,5 +1,0 @@
-org\chrysafis\theodoros\service\ServiceApplication.class
-org\chrysafis\theodoros\service\modelTODelete\Citizen.class
-org\chrysafis\theodoros\service\controller\CitizenController.class
-org\chrysafis\theodoros\service\modelTODelete\Citizen$CitizenBuilder.class
-org\chrysafis\theodoros\service\repos\ICitizenRepo.class

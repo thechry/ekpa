@@ -1,8 +1,0 @@
-,Kotsous,Papakotsous,Aren,123456789,Tautotita cannot be null or empty
- ,Kotsous,Papakotsous,Aren,,Tautotita cannot be null or empty
-AX123456,,Papakotsous,Aren,123456789,Name cannot be null or empty
-AX123456,,Papakotsous,Aren,123456789,Name cannot be null or empty
-AX123456,Kotsous,Papakotsous,,123456789,Gender cannot be null or empty
-AX123456,Kotsous,Papakotsous, ,123456789,Gender cannot be null or empty
-AX123456,Kotsous,,Aren,123456789,Surname cannot be null or empty
-AX123456,Kotsous,,Aren,123456789,Surname cannot be null or empty

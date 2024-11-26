@@ -27,11 +27,11 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Upload report
-        if: always() && steps.clean-install-mitroo == 'success'
-        uses: actions/upload-artifact@v3
+        if: always() && steps.clean-install-mitroo.outcome == 'success'
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: '**/target/surefire-reports/*.xml'
+          path: ./reports/*.xml
 
   clean-install-test:
     runs-on: ubuntu-latest

@@ -58,19 +58,19 @@ jobs:
           
       
 
-    clean-install-integration_test:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v4
+  clean-install-integration_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-          - name: Setup JDK 21
-            uses: actions/setup-java@v4
-            with:
-              java-version: '21'
-              distribution: adopt
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: adopt
               
-        - name: Integration test
+      - name: Integration test
         id: integration-test-mitroo
         run: mvn failsafe:integration-test
 
@@ -78,8 +78,8 @@ jobs:
         if: always() && steps.integration-test-mitroo.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
-          name: integration-test-reports
-          path: '**/target/failsafe-reports/*.xml'
+         name: integration-test-reports
+         path: '**/target/failsafe-reports/*.xml'
 
       - name: Upload Integration failure report
         if: always() && steps.integration-test-mitroo.outcome == 'failure'
@@ -89,7 +89,7 @@ jobs:
           path: '**/target/failsafe-reports/*.xml'
 
   merge-to-develop:
-    needs: clean-install-test
+    needs: clean-install-unit_test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

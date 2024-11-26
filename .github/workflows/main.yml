@@ -23,7 +23,7 @@ jobs:
           distribution: adopt
 
       - name: Clean - Install project
-        id: clean-install-citizen
+        id: clean-install-mitroo
         run: mvn clean install -DskipTests
 
   clean-install-test:

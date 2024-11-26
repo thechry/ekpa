@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - src-updates
-    paths: [service, client, model]
+    #paths: [service, client, model]
 
 permissions:
   contents: write

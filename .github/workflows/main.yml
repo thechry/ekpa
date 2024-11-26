@@ -26,6 +26,13 @@ jobs:
       - name: Clean - Install project
         id: clean-install-mitroo
         run: mvn clean install -DskipTests
+        
+      - name: Upload report on success
+        if: always() && steps.clean-install-mitroo.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: notest-reports-success
+          path: '**/target/notest-reports/*.xml'
       
   clean-install-unit_test:
     runs-on: ubuntu-latest

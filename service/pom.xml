@@ -101,7 +101,6 @@
 		<dependency>
 			<groupId>org.chrysafis.theodoros</groupId>
 			<artifactId>model</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

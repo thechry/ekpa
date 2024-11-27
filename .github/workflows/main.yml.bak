@@ -82,7 +82,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
             name: model-jar
-            path: "C:/Users/Comtech/.m2/repository/org/chrysafis/theodoros/model/0.0.1-SNAPSHOT/model-0.0.1-SNAPSHOT.jar
+            path: "C:/Users/Comtech/.m2/repository/org/chrysafis/theodoros/model/0.0.1-SNAPSHOT/model-0.0.1-SNAPSHOT.jar"
               
       - name: Integration test
         id: integration-test-mitroo

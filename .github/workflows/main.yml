@@ -99,7 +99,7 @@ jobs:
           path: '**/target/failsafe-reports/*.xml'
 
   merge-to-develop:
-    needs: clean-install-unit_test
+    needs: [clean-install-unit_test, clean-install-integration_test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

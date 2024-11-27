@@ -98,8 +98,13 @@ jobs:
           name: integration-test-reports-failures
           path: '**/target/failsafe-reports/*.xml'
 
+<<<<<<< HEAD
   merge-to-develop:
     needs: [clean-install-unit_test, clean-install-integration_test]
+=======
+  merge-to-develop: #in a perfect world!
+    needs: clean-install-unit_test
+>>>>>>> 713006aea588a2899fc36a1a5f970d7bdb746d8d
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

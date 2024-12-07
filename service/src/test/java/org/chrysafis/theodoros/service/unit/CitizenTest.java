@@ -4,7 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.chrysafis.theodoros.service.model.Citizen;
+import org.chrysafis.theodoros.model.Citizen;
+//import org.chrysafis.theodoros.service.modelTODelete.Citizen;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -27,6 +28,7 @@ public class CitizenTest implements TestInterface
 	@CsvFileSource(resources="/negativeSingleCitizen.csv")
 	void checkNegativeSingleCitizen(ArgumentsAccessor accessor) {
 		Exception e = assertThrows(IllegalArgumentException.class, ()-> CitizenUtility.createNegativeCitizen(accessor));
+		
 		assertEquals(accessor.getString(6), e.getMessage());
 	}
 	
@@ -39,7 +41,8 @@ public class CitizenTest implements TestInterface
 		assertNull(citizen.GetCitizenSurname());
 		assertNull(citizen.GetCitizenGender());
 		assertNull(citizen.GetCitizenDoB());
-		assertNull(citizen.GetCitizenAfm());
+		//assertNull(citizen.GetCitizenAfm());
+		assertEquals(citizen.GetCitizenAfm(), 0);
 		assertNull(citizen.GetCitizenAddress());		
 	}
 	
@@ -49,6 +52,7 @@ public class CitizenTest implements TestInterface
 	@ValueSource(strings = { " ", "   ", "\t", "\n" })
 	void nullEmptyAndBlankStringsforTautotita(String tautotita) {
 		Citizen citizen = new Citizen();
+		
 		Exception e = assertThrows(IllegalArgumentException.class, ()-> citizen.SetTautotita(tautotita));
 		assertEquals("Tautotita cannot be null or empty", e.getMessage());
 	}

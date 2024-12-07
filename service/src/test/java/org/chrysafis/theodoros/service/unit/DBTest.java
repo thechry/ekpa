@@ -8,8 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.chrysafis.theodoros.model.Citizen;
+//import org.chrysafis.theodoros.service.modelTODelete.Citizen;
 import org.chrysafis.theodoros.service.repos.ICitizenRepo;
-import org.chrysafis.theodoros.service.model.Citizen;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -44,7 +45,7 @@ public class DBTest  implements TestInterface
 		"ZZ987654, Mitsous, Papamitsous, Aren, 01-25-1991",
 	})
 	void checkCitizenDeletion(String tautotita, String name, String surname, String gender, String dob) {		
-		Citizen citizen = new Citizen.CitizenBuilder(tautotita,name,surname, gender, dob).build();
+		Citizen citizen = new Citizen.CitizenBuilder(tautotita,name,surname, gender, dob, 0, "").build();
 		repo.save(citizen);
 		repo.deleteById(tautotita);
 		citizen = repo.findById(tautotita).orElse(null);
@@ -60,7 +61,7 @@ public class DBTest  implements TestInterface
 			"ZZ987650, Mitsous, Papamitsous, Aren, 01-25-1991",
 		})
 		void checkCitizenUpdate(String tautotita, String name, String surname, String gender, String dob) {
-			Citizen citizen = new Citizen.CitizenBuilder(tautotita, name, surname, gender, dob).build();
+			Citizen citizen = new Citizen.CitizenBuilder(tautotita, name, surname, gender, dob, 0, "").build();
 			repo.save(citizen);
 			Random r = new Random();
 			int choice = r.nextInt(4);
@@ -103,9 +104,9 @@ public class DBTest  implements TestInterface
 		@Test
 		@Order(3)
 		void checkCitizenRetrieval() {
-			Citizen citizen1 = new Citizen.CitizenBuilder("AX123450", "Kotsous","Papakotsous", "Aren", "12-02-1997").build();
-			Citizen citizen2 = new Citizen.CitizenBuilder("AB123120", "Giors", "Papagiors", "Aren", "02-05-1869").build();
-			Citizen citizen3 = new Citizen.CitizenBuilder("ZZ987650", "Mitsous", "Papamitsous", "Aren", "01-25-1991").build();
+			Citizen citizen1 = new Citizen.CitizenBuilder("AX123450", "Kotsous","Papakotsous", "Aren", "12-02-1997", 0, "").build();
+			Citizen citizen2 = new Citizen.CitizenBuilder("AB123120", "Giors", "Papagiors", "Aren", "02-05-1869", 0, "").build();
+			Citizen citizen3 = new Citizen.CitizenBuilder("ZZ987650", "Mitsous", "Papamitsous", "Aren", "01-25-1991", 0, "").build();
 			repo.save(citizen1);
 			repo.save(citizen2);
 			repo.save(citizen3);

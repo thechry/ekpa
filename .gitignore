@@ -2,7 +2,6 @@
 .project
 client/.mvn/*.*
 client/.settings/*.*
-client/target
 client/.classpath
 client/.project
 model/.mvn/*.*

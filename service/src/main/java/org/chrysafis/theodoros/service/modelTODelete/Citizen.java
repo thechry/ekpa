@@ -1,4 +1,4 @@
-package org.chrysafis.theodoros.service.model;
+package org.chrysafis.theodoros.service.modelTODelete;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

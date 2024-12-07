@@ -7,7 +7,10 @@ import java.util.Map;
 import java.net.InetAddress;
 import java.net.URI;
 
-import org.chrysafis.theodoros.service.model.Citizen;
+import org.chrysafis.theodoros.model.Citizen;
+
+//import org.chrysafis.theodoros.service.model.Citizen;
+
 import org.chrysafis.theodoros.service.repos.ICitizenRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

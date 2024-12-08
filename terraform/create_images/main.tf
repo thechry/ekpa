@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "db" {
-  ami           = "ami-0aff18ec83b712f05" # Ubuntu Server 24.04 LTS AMI
+  ami           = "ami-0e2c8caa4b6378d8c" # Ubuntu Server 24.04 LTS AMI
   instance_type = var.instance_type_db
   key_name      = var.key_name
   tags = {
@@ -32,37 +32,37 @@ resource "aws_instance" "db" {
 }
 
 # Poll for instance status to ensure user data script completes
-resource "null_resource" "wait_for_db_instance" {
-  depends_on = [aws_instance.db]
+#resource "null_resource" "wait_for_db_instance" {
+#  depends_on = [aws_instance.db]
 
-  provisioner "remote-exec" {
-    inline = [
-      "while [ ! -f /tmp/user_data_complete ]; do sleep 10; done",
-      "echo 'User-data script completed'"
-    ]
+#  provisioner "remote-exec" {
+#    inline = [
+#      "while [ ! -f /tmp/user_data_complete ]; do sleep 10; done",
+#      "echo 'User-data script completed'"
+#    ]
 
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("I:/mydocs/ekpa/DevOps/Exercise/mitroo_terraform_1/friend.pem")
-      host        = aws_instance.db.public_ip
-    }
-  }
-}
+#    connection {
+#      type        = "ssh"
+#      user        = "ubuntu"
+#      private_key = file("I:/mydocs/ekpa/DevOps/Exercise/mitroo_terraform_1/friend1.pem")
+#      host        = aws_instance.db.public_ip
+#    }
+#  }
+#}
 
-resource "aws_ami_from_instance" "db_ami" {
-  name               = "db-ami"
-  source_instance_id = aws_instance.db.id
+#resource "aws_ami_from_instance" "db_ami" {
+#  name               = "db-ami"
+#  source_instance_id = aws_instance.db.id
  
-  tags = {
-    Name = "mitroo-db-ami"
-  }
+#  tags = {
+#    Name = "mitroo-db-ami"
+#  }
 
-  depends_on = [null_resource.wait_for_db_instance]
-}
+#  depends_on = [null_resource.wait_for_db_instance]
+#}
 
 resource "aws_instance" "app" {
-  ami           = "ami-0aff18ec83b712f05"  # Ubuntu Server 24.04 LTS AMI
+  ami           = "ami-0e2c8caa4b6378d8c"  # Ubuntu Server 24.04 LTS AMI
   instance_type = var.instance_type_app
   key_name      = var.key_name
   tags = {
@@ -77,37 +77,38 @@ resource "aws_instance" "app" {
               cd /home/ubuntu/app
               git fetch
               git checkout -b ${var.git_repo_branch} origin/${var.git_repo_branch}
-              mvn clean package
+#              mvn clean package
+			  mvn clean
               touch /tmp/user_data_complete
               EOF
 }
 
 # Poll for instance status to ensure user data script completes
-resource "null_resource" "wait_for_app_instance" {
-  depends_on = [aws_instance.app]
+#resource "null_resource" "wait_for_app_instance" {
+#  depends_on = [aws_instance.app]
 
-  provisioner "remote-exec" {
-    inline = [
-      "while [ ! -f /tmp/user_data_complete ]; do sleep 10; done",
-      "echo 'User-data script completed'"
-    ]
+#  provisioner "remote-exec" {
+#    inline = [
+#      "while [ ! -f /tmp/user_data_complete ]; do sleep 10; done",
+#      "echo 'User-data script completed'"
+#    ]
 
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("I:/mydocs/ekpa/DevOps/Exercise/mitroo_terraform_1/friend.pem")
-      host        = aws_instance.app.public_ip
-    }
-  }
-}
+#    connection {
+#      type        = "ssh"
+#      user        = "ubuntu"
+#      private_key = file("I:/mydocs/ekpa/DevOps/Exercise/mitroo_terraform_1/friend1.pem")
+#      host        = aws_instance.app.public_ip
+#    }
+#  }
+#}
 
-resource "aws_ami_from_instance" "app_ami" {
-  name               = "app-ami"
-  source_instance_id = aws_instance.app.id
+#resource "aws_ami_from_instance" "app_ami" {
+#  name               = "app-ami"
+#  source_instance_id = aws_instance.app.id
   
-  tags = {
-    Name = "mitroo-app-ami"
-  }
+#  tags = {
+#    Name = "mitroo-app-ami"
+#  }
   
-  depends_on = [null_resource.wait_for_app_instance]
-}
+#  depends_on = [null_resource.wait_for_app_instance]
+#}

@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.chrysafis.theodoros.service.modelTODelete.Citizen;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import org.chrysafis.theodoros.service.model.Citizen;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -50,7 +50,7 @@ public class CitizenValidTest implements TestInterface
 		assertNotEquals(viols.size(), 0);
 		
 		List<String> messages = getMessages(viols);
-		assertTrue(messages.contains("tautotita is invalid!"));
+		assertTrue(messages.contains("Tautotita must have 8 chars!"));
 	}
 	
 	@ParameterizedTest
@@ -64,11 +64,11 @@ public class CitizenValidTest implements TestInterface
 		assertNotEquals(viols.size(), 0);
 		
 		List<String> messages = getMessages(viols);
-		assertFalse(messages.contains("tautotita is invalid!"));
+		assertFalse(messages.contains("Tautotita must have 8 chars!"));
 	}
 	
 	@ParameterizedTest
-	@ValueSource(strings = { "*John", "^John", "John&", "John%2" })
+	@ValueSource(strings = { "", "John512345123451234512345John123451234512345123451234512345" })
 	void checkInvalidName(String name) {
 		Citizen citizen = new Citizen();
 		citizen.SetCitizenName(name);
@@ -78,7 +78,7 @@ public class CitizenValidTest implements TestInterface
 		assertNotEquals(viols.size(), 0);
 		
 		List<String> messages = getMessages(viols);
-		assertTrue(messages.contains("name is invalid!"));
+		assertTrue(messages.contains("Name must be between 2-50 chars"));
 	}
 	
 	@ParameterizedTest
@@ -92,7 +92,7 @@ public class CitizenValidTest implements TestInterface
 		assertNotEquals(viols.size(), 0);
 		
 		List<String> messages = getMessages(viols);
-		assertFalse(messages.contains("name is invalid!"));
+		assertFalse(messages.contains("Name must be between 2-50 chars"));
 	}
 	
 	@ParameterizedTest
@@ -107,7 +107,7 @@ public class CitizenValidTest implements TestInterface
 		assertNotEquals(viols.size(), 0);
 		
 		List<String> messages = getMessages(viols);
-		assertTrue(messages.contains("surname cannot be blank!"));
+		assertTrue(messages.contains("Surname must be 2-50 chars"));
 	}
 	
 	@ParameterizedTest
@@ -121,7 +121,7 @@ public class CitizenValidTest implements TestInterface
 		assertNotEquals(viols.size(), 0);
 		
 		List<String> messages = getMessages(viols);
-		assertFalse(messages.contains("surname name cannot be blank!"));
+		assertFalse(messages.contains("Surname must be 2-50 chars"));
 	}
 	
 	// klp ++++

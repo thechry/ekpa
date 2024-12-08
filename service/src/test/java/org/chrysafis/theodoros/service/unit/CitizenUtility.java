@@ -2,7 +2,8 @@ package org.chrysafis.theodoros.service.unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.chrysafis.theodoros.service.model.Citizen;
+//import org.chrysafis.theodoros.service.modelTODelete.Citizen;
+import org.chrysafis.theodoros.model.Citizen;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 
 public class CitizenUtility
@@ -17,7 +18,8 @@ public class CitizenUtility
 			int afm = accessor.getInteger(start + 5);
 			String address = accessor.getString(start + 6);
 			
-			return new Citizen.CitizenBuilder(tautotita, name, surname, gender, dob).CitizenAfm(afm).CitizenAddress(address).build();
+			//return new Citizen.CitizenBuilder(tautotita, name, surname, gender, dob).CitizenAfm(afm).CitizenAddress(address).build();
+			return new Citizen.CitizenBuilder(tautotita, name, surname, gender, dob, afm, address).build();
 		}
 		
 		//Trying to create a citizen from each CVS row - The creation of citizen will deliberately fail
@@ -29,7 +31,8 @@ public class CitizenUtility
 			String dob = accessor.getString(4);						
 			int afm = accessor.getInteger(5);
 			
-			Citizen citizen = new Citizen.CitizenBuilder(tautotita, name, surname, gender, dob).CitizenAfm(afm).build();
+			//Citizen citizen = new Citizen.CitizenBuilder(tautotita, name, surname, gender, dob).CitizenAfm(afm).build();
+			Citizen citizen = new Citizen.CitizenBuilder(tautotita, name, surname, gender, dob, afm, "").build();
 			System.out.println("Got citizen: " + citizen);
 		}
 		

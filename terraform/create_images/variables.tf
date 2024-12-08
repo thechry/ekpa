@@ -51,3 +51,8 @@ variable "key_name" {
   type        = string
   default     = "friend1"
 }
+
+#variable "sec_group" {
+#  description = ""
+#  type = string
+#  default = sg-0097181302cf71471

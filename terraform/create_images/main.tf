@@ -31,6 +31,7 @@ resource "aws_instance" "db" {
               EOF
 }
 
+
 # Poll for instance status to ensure user data script completes
 resource "null_resource" "wait_for_db_instance" {
   depends_on = [aws_instance.db]
@@ -77,8 +78,7 @@ resource "aws_instance" "app" {
               cd /home/ubuntu/app
               git fetch
               git checkout -b ${var.git_repo_branch} origin/${var.git_repo_branch}
-#              mvn clean package
-			  mvn clean
+              mvn clean package -DskipTests
               touch /tmp/user_app_data_complete
               EOF
 }

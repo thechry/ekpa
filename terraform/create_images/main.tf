@@ -27,7 +27,7 @@ resource "aws_instance" "db" {
               sudo mysql -u root -e "CREATE DATABASE ${var.db_name};"
               sudo mysql -u root -e "GRANT ALL PRIVILEGES ON ${var.db_name}.* TO '${var.db_user}'@'%' WITH GRANT OPTION;"
               sudo mysql -u root -e "FLUSH PRIVILEGES;"
-              touch /tmp/user_data_complete
+              touch /tmp/user_db_data_complete
               EOF
 }
 
@@ -37,7 +37,7 @@ resource "null_resource" "wait_for_db_instance" {
 
   provisioner "remote-exec" {
     inline = [
-      "while [ ! -f /tmp/user_data_complete ]; do sleep 10; done",
+      "while [ ! -f /tmp/user_db_data_complete ]; do sleep 10; done",
       "echo 'User-data script completed'"
     ]
 
@@ -79,7 +79,7 @@ resource "aws_instance" "app" {
               git checkout -b ${var.git_repo_branch} origin/${var.git_repo_branch}
 #              mvn clean package
 			  mvn clean
-              touch /tmp/user_data_complete
+              touch /tmp/user_app_data_complete
               EOF
 }
 
@@ -89,7 +89,7 @@ resource "null_resource" "wait_for_app_instance" {
 
   provisioner "remote-exec" {
     inline = [
-      "while [ ! -f /tmp/user_data_complete ]; do sleep 10; done",
+      "while [ ! -f /tmp/user_app_data_complete ]; do sleep 10; done",
       "echo 'User-data script completed'"
     ]
 

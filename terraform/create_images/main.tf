@@ -106,7 +106,7 @@ resource "aws_ami_from_instance" "app_ami" {
   source_instance_id = aws_instance.app.id
   
   tags = {
-    Name = mitroo-app-ami"
+    Name = "mitroo-app-ami"
   }
   
   depends_on = [null_resource.wait_for_app_instance]

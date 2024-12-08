@@ -1,7 +1,7 @@
 variable "region" {
   description = "The AWS region to deploy to"
   type        = string
-  default     = "us-east-1a"
+  default     = "us-east-1"
 }
 
 variable "instance_type_app" {

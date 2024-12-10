@@ -37,13 +37,13 @@ variable "db_name" {
 variable "vpc_id" {
   description = "VPC ID for the infrastructure"
   type        = string
-  default     = "vpc-40767025"
+  default     = "vpc-0a243927b45d137a6"
 }
 
 variable "subnets" {
   description = "Subnets for the load balancer"
   type        = list(string)
-  default     = ["subnet-d83421bd", "subnet-d1a08ea6"]
+  default     = ["subnet-02c3e02ebec7767cd", "subnet-00e3833eb735809c0"]
 }
 
 variable "key_name" {

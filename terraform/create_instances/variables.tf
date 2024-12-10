@@ -49,7 +49,7 @@ variable "subnets" {
 variable "key_name" {
   description = "The name of the SSH key pair"
   type        = string
-  default     = "friend"
+  default     = "friend1"
 }
 
 variable "jar_name" {

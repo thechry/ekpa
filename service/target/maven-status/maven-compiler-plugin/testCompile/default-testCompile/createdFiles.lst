@@ -1,0 +1,12 @@
+org\chrysafis\theodoros\service\integration\ThirdIT.class
+org\chrysafis\theodoros\service\ServiceApplicationTests.class
+org\chrysafis\theodoros\service\integration\TestLifecycleLogger.class
+org\chrysafis\theodoros\service\unit\CitizenUtility.class
+org\chrysafis\theodoros\service\unit\TestInterface.class
+org\chrysafis\theodoros\service\integration\SecondIT.class
+org\chrysafis\theodoros\service\integration\FirstIT.class
+org\chrysafis\theodoros\service\unit\DBTest.class
+org\chrysafis\theodoros\service\integration\SecondIT$1.class
+org\chrysafis\theodoros\service\unit\CitizenTest.class
+org\chrysafis\theodoros\service\integration\ThirdIT$1.class
+org\chrysafis\theodoros\service\unit\CitizenValidTest.class

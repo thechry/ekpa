@@ -2,7 +2,6 @@ package org.chrysafis.theodoros.service.unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//import org.chrysafis.theodoros.service.modelTODelete.Citizen;
 import org.chrysafis.theodoros.model.Citizen;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 

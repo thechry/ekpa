@@ -16,7 +16,7 @@ if !errorlevel! equ 0 (
     echo The resources have been created.
         
     pause
-    exit /b 0
+    
 ) else (
     echo Terraform apply images failed.
     pause

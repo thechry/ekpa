@@ -16,11 +16,11 @@ if !errorlevel! equ 0 (
     echo The resources have been destroyed.
         
     pause
-    exit /b 0
+
 ) else (
     echo Terraform destroy failed.
     pause
-    exit /b 1
+    
 )
 
 echo Running images terraform destroy...

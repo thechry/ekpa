@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Random;
 
 import org.chrysafis.theodoros.model.Citizen;
-//import org.chrysafis.theodoros.service.modelTODelete.Citizen;
 import org.chrysafis.theodoros.service.repos.ICitizenRepo;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

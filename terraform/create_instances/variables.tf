@@ -55,5 +55,5 @@ variable "key_name" {
 variable "jar_name" {
   description = "The name of the app jar file"
   type        = string
-  default     = "mitroo-spring-0.1"
+  default     = "service-0.0.1-SNAPSHOT"
 }

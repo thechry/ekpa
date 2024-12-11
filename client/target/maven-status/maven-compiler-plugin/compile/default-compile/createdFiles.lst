@@ -1,0 +1,4 @@
+org\chrysafis\theodoros\client\helpers\Helper.class
+org\chrysafis\theodoros\client\rest\MitrooRest.class
+org\chrysafis\theodoros\client\App.class
+org\chrysafis\theodoros\client\conf\ImmutableApiConfiguration.class

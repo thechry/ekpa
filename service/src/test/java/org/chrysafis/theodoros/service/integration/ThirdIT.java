@@ -1,6 +1,7 @@
 package org.chrysafis.theodoros.service.integration;
 
-import org.chrysafis.theodoros.service.modelTODelete.Citizen;
+
+import org.chrysafis.theodoros.model.Citizen;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

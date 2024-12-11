@@ -1,5 +1,6 @@
 package org.chrysafis.theodoros.service.controller;
 
+
 import jakarta.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -8,10 +9,13 @@ import java.net.InetAddress;
 import java.net.URI;
 
 import org.chrysafis.theodoros.model.Citizen;
+import org.chrysafis.theodoros.service.repos.ICitizenRepo;
+
+//import org.chrysafis.theodoros.model.Citizen;
 
 //import org.chrysafis.theodoros.service.model.Citizen;
 
-import org.chrysafis.theodoros.service.repos.ICitizenRepo;
+//import org.chrysafis.theodoros.service.repos.ICitizenRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
